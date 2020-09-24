@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.du.mapper.EmployeeMapper">
+
+    <insert id="addEmployee" parameterType="Employee">
+        INSERT INTO employee(`name`,age,sex,address,phone,`password`) VALUES (#{name},#{age},#{sex},#{address},#{phone},#{password})
+    </insert>
+
+    <update id="updateEmployee">
+        UPDATE employee SET `name` = #{name}, age = #{age}, sex = #{sex}, address = #{address}, phone= #{phone} , `password` = #{password} WHERE id = #{id}
+    </update>
+
+    <delete id="deleteEmployeeById" parameterType="int">
+        DELETE FROM employee WHERE id = #{id}
+    </delete>
+
+    <select id="queryEmployeeById" resultType="com.du.pojo.Employee">
+        SELECT id,name,age,sex,address,phone,password FROM employee WHERE id = #{id}
+    </select>
+
+    <select id="queryAllEmployee" resultType="com.du.pojo.Employee">
+        SELECT id,name,age,sex,address,phone,password FROM employee
+    </select>
+
+</mapper>
